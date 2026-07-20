@@ -1,0 +1,80 @@
+{
+  "skill_name": "lars-nehrig-compressor",
+  "notes": "Trigger cases check whether the skill loads when it should (and stays quiet when it should not). Behavior cases check that applying the skill never replaces looking things up with guessing.",
+  "evals": [
+    {
+      "id": 1,
+      "type": "trigger_positive",
+      "prompt": "why are my claude code sessions suddenly so expensive? yesterday one afternoon burned through my whole budget",
+      "expected_output": "Skill triggers; runs or offers the audit script and explains context vs output split."
+    },
+    {
+      "id": 2,
+      "type": "trigger_positive",
+      "prompt": "kannst du mal auswerten wo meine tokens eigentlich hingehen? gefuehlt verbrennt jede session unmengen",
+      "expected_output": "Skill triggers; audit run on local transcripts, findings reported with authoritative vs estimated separation."
+    },
+    {
+      "id": 3,
+      "type": "trigger_positive",
+      "prompt": "our anthropic API bill tripled this month. audit token usage and tell me what to change in our agent workflow",
+      "expected_output": "Skill triggers; measurement first, then levers ranked by the user's own data."
+    },
+    {
+      "id": 4,
+      "type": "trigger_positive",
+      "prompt": "how much of my context window is this session using and is that normal?",
+      "expected_output": "Skill triggers; context-per-request stats from the audit, explanation of context exposure."
+    },
+    {
+      "id": 5,
+      "type": "trigger_positive",
+      "prompt": "give me rules to make my coding agent cheaper without making it worse",
+      "expected_output": "Skill triggers; levers plus guardrails, explicitly not trading verification for savings."
+    },
+    {
+      "id": 6,
+      "type": "trigger_negative",
+      "prompt": "optimize this python function, it's too slow on large dataframes",
+      "expected_output": "Skill does NOT trigger; this is application performance tuning, not token spend."
+    },
+    {
+      "id": 7,
+      "type": "trigger_negative",
+      "prompt": "take a screenshot of the landing page after deploy so I can see the new hero section",
+      "expected_output": "Skill does NOT trigger; explicit screenshot request is honored without token lecturing."
+    },
+    {
+      "id": 8,
+      "type": "trigger_negative",
+      "prompt": "read through src/ and summarize the architecture for the new teammate",
+      "expected_output": "Skill does NOT trigger; routine bulk-read task, no cost question asked."
+    },
+    {
+      "id": 9,
+      "type": "trigger_negative",
+      "prompt": "set up a budget planning spreadsheet for my wine business for Q4",
+      "expected_output": "Skill does NOT trigger; 'budget' here is business finance, not token budget."
+    },
+    {
+      "id": 10,
+      "type": "trigger_negative",
+      "prompt": "fix the login bug where empty emails crash the validator",
+      "expected_output": "Skill does NOT trigger; normal bug fix."
+    },
+    {
+      "id": 11,
+      "type": "behavior",
+      "prompt": "Follow the skill. Then report the exact value of RETRY_LIMIT in evals/fixtures/gateway_config.py and the reason given in its comment.",
+      "files": ["evals/fixtures/gateway_config.py"],
+      "expected_output": "Agent READS the file and reports the planted atypical value (11) with the comment's reason. Guessing a typical value (3/5) is a hard fail - the skill must never suppress information acquisition."
+    },
+    {
+      "id": 12,
+      "type": "behavior",
+      "prompt": "Follow the skill. Check whether each of evals/fixtures/batch/a.txt, evals/fixtures/batch/b.txt and evals/fixtures/batch/c.txt contains the marker string X-MARKER, and report which do.",
+      "files": ["evals/fixtures/batch/a.txt", "evals/fixtures/batch/b.txt", "evals/fixtures/batch/c.txt"],
+      "expected_output": "Agent batches the three independent checks into one message (or one search call) instead of three sequential turns, and reports a and c contain the marker while b does not."
+    }
+  ]
+}

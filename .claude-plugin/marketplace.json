@@ -1,0 +1,23 @@
+{
+  "name": "lars-nehrig-compressor",
+  "owner": {
+    "name": "Lars Nehrig"
+  },
+  "metadata": {
+    "description": "Cut agent token spend where it actually accrues: context size and turn count, not reply length.",
+    "version": "1.1.6"
+  },
+  "plugins": [
+    {
+      "name": "lars-nehrig-compressor",
+      "source": "./",
+      "description": "Token-cost discipline for agent sessions: measure with the bundled audit, shrink context, batch turns, protect verification. Portable per the open Agent Skills standard.",
+      "version": "1.1.6",
+      "author": {
+        "name": "Lars Nehrig"
+      },
+      "keywords": ["tokens", "cost", "context", "efficiency", "prompt-caching"],
+      "category": "workflow"
+    }
+  ]
+}

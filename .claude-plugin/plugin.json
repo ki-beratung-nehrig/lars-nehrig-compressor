@@ -1,0 +1,10 @@
+{
+  "name": "lars-nehrig-compressor",
+  "description": "Cut agent token spend where it actually accrues: context size and turn count, not reply length. Includes a transcript audit script and an optional always-on snippet.",
+  "version": "1.1.6",
+  "author": {
+    "name": "Lars Nehrig"
+  },
+  "license": "MIT",
+  "keywords": ["tokens", "cost", "context", "efficiency", "prompt-caching"]
+}
